@@ -7,8 +7,9 @@ pipeline {
                 bat 'npm run build'
             }
         }
-        stage('Test') {
+        stage('Docker Stuff') {
             steps {
+                bat 'docker pull httpd'
                 bat 'docker build -t something .'
                 bat 'docker run -dit --name my-running-app -p 8081:80 something'
             }
